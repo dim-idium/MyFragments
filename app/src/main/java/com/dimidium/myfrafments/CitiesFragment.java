@@ -1,5 +1,6 @@
 package com.dimidium.myfrafments;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -50,16 +51,31 @@ public class CitiesFragment extends Fragment {
     private void initList(View view) {
         LinearLayout layoutView = (LinearLayout) view;
         String[] cities = getResources().getStringArray(R.array.cities);
-
-        for (String city: cities) {
-            Context context = getContext();
+        Context context = getContext();
+        for (int i = 0; i<cities.length; i++) {
             if(context != null){
-                TextView tv = new TextView(context);
-                tv.setText(city);
-                tv.setTextSize(30);
-                layoutView.addView(tv);
+                String city = cities[i];
+                TextView textView = new TextView(context);
+                textView.setText(city);
+                textView.setTextSize(30);
+                layoutView.addView(textView);
+                final int fi = i;
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showPortCoat(fi);
+                    }
+                });
             }
         }
-
     }
+            private void showPortCoat(int index) {
+                Context context = getContext();
+                if (context != null) {
+                    Intent intent = new Intent(context, CoatsFragment.class);
+                    intent.putExtra(CoatsFragment.ARG_INDEX,index);
+                    startActivity(intent);
+
+                }
+            }
 }

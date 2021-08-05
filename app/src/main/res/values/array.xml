@@ -7,7 +7,7 @@
         <item>Уфа</item>
     </string-array>
 
-    <string-array name="coats">
+    <string-array name="coats_img">
         <item>@drawable/ufa</item>
         <item>@drawable/sterlitamak</item>
         <item>@drawable/ishimbay</item>
